@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetalCraft20 - Arte y Flores Eternas</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --rosa-pastel: #ffe6ed;
+            --rosa-medio: #f48fb1;
+            --rosa-fuerte: #d81b60;
+            --degrade-rosa: linear-gradient(135deg, #ff80ab 0%, #ad1457 100%);
+            --texto-principal: #3a2e39;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--texto-principal);
+            background-color: #fff9fa;
+        }
+
+        /* Navbar elegante */
+        .navbar-custom {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(244, 143, 177, 0.15);
+        }
+
+        /* Hero Section Dinámico */
+        .hero {
+            background: radial-gradient(circle at top right, #ffe6ed, #fff0f5, #ffffff);
+            padding: 80px 0 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.2);
+            border: 6px solid #ffffff;
+            transition: transform 0.4s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.03) rotate(2deg);
+        }
+
+        /* Filtros de Categoría Interactivos */
+        .btn-filter {
+            border: 2px solid var(--rosa-medio);
+            color: var(--rosa-fuerte);
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 8px 22px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .btn-filter:hover,
+        .btn-filter.active {
+            background: var(--degrade-rosa);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.3);
+        }
+
+        /* Tarjetas de Producto Modernas */
+        .card-craft {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-craft:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 35px rgba(244, 143, 177, 0.3);
+        }
+
+        .img-container {
+            position: relative;
+            overflow: hidden;
+            height: 320px;
+        }
+
+        .card-craft img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card-craft:hover img {
+            transform: scale(1.08);
+        }
+
+        .badge-craft {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--rosa-fuerte);
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Botones de acción */
+        .btn-whatsapp-custom {
+            background-color: #25D366;
+            color: white;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 10px 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-whatsapp-custom:hover {
+            background-color: #1eb954;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-quote {
+            background: var(--degrade-rosa);
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-quote:hover {
+            opacity: 0.95;
+            color: white;
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.3);
+        }
+
+        /* Sección de Reseñas */
+        .review-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(244, 143, 177, 0.12);
+            border: 1px solid var(--rosa-pastel);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stars-gold {
+            color: #ffc107;
+            font-size: 1.1rem;
+        }
+
+        /* Botón Flotante interactivo */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 14px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.04);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .floating-whatsapp:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Botón Flotante con efecto Pulse -->
+    <a href="https://wa.me/523421215573?text=Hola%20Lesslie,%20me%20encantaron%20tus%20creaciones%20de%20PetalCraft20%20y%20quisiera%20pedir%20informaci%C3%B3n"
+        target="_blank" class="floating-whatsapp">
+        <i class="bi bi-whatsapp fs-4"></i>
+        <span class="d-none d-md-inline">¡Cotizar por WhatsApp!</span>
+    </a>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-custom">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-danger fs-4 d-flex align-items-center gap-2" href="#">
+                🌸 PetalCraft20
+            </a>
+            <div class="d-flex gap-2">
+                <a href="https://www.instagram.com/petal_craft20?igsh=MThieWtoaGEwb2RseQ==" target="_blank"
+                    class="btn btn-outline-danger rounded-circle p-2 fs-5">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://wa.me/523421215573" target="_blank"
+                    class="btn btn-whatsapp-custom d-flex align-items-center gap-1">
+                    <i class="bi bi-whatsapp"></i> <span class="d-none d-sm-inline">Contacto</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 text-center mb-4 mb-lg-0">
+                    <img src="logo.jpg" alt="PetalCraft20 Logo" class="logo-img img-fluid">
+                </div>
+                <div class="col-lg-7 text-center text-lg-start">
+                    <span class="badge bg-danger bg-opacity-10 text-danger px-3 py-2 rounded-pill fw-bold mb-3">
+                        ✨ Detalles Eternos en Limpiapipas
+                    </span>
+                    <h1 class="display-4 fw-bold text-dark">Elegancia y creatividad tejida a mano</h1>
+                    <p class="lead text-muted my-3">
+                        Transformamos limpiapipas de alta calidad en flores eternas, accesorios para bolsos, espejos y
+                        figuras llenas de ternura. Regalale a esa persona especial un detalle que durará para siempre.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mt-4">
+                        <a href="https://wa.me/523421215573?text=Hola%20Lesslie,%20quisiera%20hacer%20un%20pedido%20personalizado"
+                            target="_blank" class="btn btn-whatsapp-custom btn-lg">
+                            <i class="bi bi-whatsapp me-2"></i> Pedir por WhatsApp
+                        </a>
+                        <a href="https://www.instagram.com/petal_craft20?igsh=MThieWtoaGEwb2RseQ==" target="_blank"
+                            class="btn btn-outline-dark rounded-pill btn-lg px-4">
+                            <i class="bi bi-instagram me-2"></i> Ver Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seccion Catálogo / Galería -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold display-6" style="color: var(--rosa-fuerte);">Catálogo Exclusivo</h2>
+                <p class="text-muted">Explora cada una de nuestras creaciones. Haz clic en cotizar para consultar
+                    disponibilidad.</p>
+            </div>
+
+            <!-- Filtros interactivos JS -->
+            <div class="d-flex justify-content-center flex-wrap gap-2 mb-5">
+                <button class="btn btn-filter active" onclick="filterGallery('todos')">Todos</button>
+                <button class="btn btn-filter" onclick="filterGallery('ramos')">Ramos y Macetas</button>
+                <button class="btn btn-filter" onclick="filterGallery('accesorios')">Llaveros y Dijes</button>
+                <button class="btn btn-filter" onclick="filterGallery('decoracion')">Decoración</button>
+            </div>
+
+            <!-- Grilla de productos -->
+            <div class="row g-4" id="gallery-grid">
+
+                <!-- Producto 1: Gerberas -->
+                <div class="col-md-6 col-lg-4 item-card ramos">
+                    <div class="card card-craft">
+                        <div class="img-container">
+                            <span class="badge-craft">Favorito 🌸</span>
+                            <img src="ramo-gerberas.jpg" alt="Ramo Gerberas">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold mb-2">Ramo Gigante de Gerberas</h5>
+                            <p class="text-muted small mb-3">Gerberas en tonos degradados rosas con envoltura premium
+                                dorada.</p>
+                            <a href="https://wa.me/523421215573?text=Hola,%20quisiera%20cotizar%20el%20Ramo%20de%20Gerberas"
+                                target="_blank" class="btn btn-quote w-100">
+                                <i class="bi bi-whatsapp me-1"></i> Cotizar Ramo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 2: Arreglo Caja -->
+                <div class="col-md-6 col-lg-4 item-card ramos">
+                    <div class="card card-craft">
+                        <div class="img-container">
+                            <span class="badge-craft">Elegante ✨</span>
+                            <img src="WhatsApp Image 2026-07-31 at 6.06.32 PM.jpeg" alt="Caja Floral">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold mb-2">Caja Cilíndrica con Tulipanes</h5>
+                            <p class="text-muted small mb-3">Arreglo cerrado con tulipanes pastel, lilis blancas y moño
+                                de satén.</p>
+                            <a href="https://wa.me/523421215573?text=Hola,%20quisiera%20cotizar%20la%20Caja%20Floral%20con%20Tulipanes"
+                                target="_blank" class="btn btn-quote w-100">
+                                <i class="bi bi-whatsapp me-1"></i> Cotizar Arreglo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 3: Canasta Regalo (NUEVO) -->
+                <div class="col-md-6 col-lg-4 item-card ramos">
+                    <div class="card card-craft">
+                        <div class="img-container">
+                            <span class="badge-craft">Nuevo 🎁</span>
+                            <img src="cajaconflores.jpg" alt="Canasta de Regalo Floral">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold mb-2">Canastilla "Best Wishes"</h5>
+                            <p class="text-muted small mb-3">Canasta rosa portátil cargada de tulipanes y flores
+                                silvestres eternas.</p>
+                            <a href="https://wa.me/523421215573?text=Hola,%20quisiera%20cotizar%20la%20Canastilla%20Best%20Wishes"
+                                target="_blank" class="btn btn-quote w-100">
+                                <i class="bi bi-whatsapp me-1"></i> Cotizar Canasta
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 4: Maceta Personaje (NUEVO) -->
+                <div class="col-md-6 col-lg-4 item-card ramos decoracion">
+                    <div class="card card-craft">
+                        <div class="img-container">
+                            <span class="badge-craft">Kawaii 🧸</span>
+                            <img src="maseta-flores-.jpg" alt="Maceta Personaje">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold mb-2">Macetita Sonriente Tulipanes</h5>
+                            <p class="text-muted small mb-3">Adorable macetita de tejido con carita feliz llena de
+                                tulipanes rosados.</p>
+                            <a href="https://wa.me/523421215573?text=Hola,%20quisiera%20cotizar%20la%20Maceta%20Sonriente"
+                                target="_blank" class="btn btn-quote w-100">
+                                <i class="bi bi-whatsapp me-1"></i> Cotizar Macetita
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 5: Accesorios para bolso (NUEVO) -->
+                <div class="col-md-6 col-lg-4 item-card accesorios">
+                    <div class="card card-craft">
+                        <div class="img-container">
+                            <span class="badge-craft">Tendencia 👜</span>
+                            <img src="llaverosbolsa.jpg" alt="Dijes para Bolso">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold mb-2">Dijes Premium para Bolso</h5>
+                            <p class="text-muted small mb-3">Flores y moños con detalles en perlas para lucir en tus
+                                bolsos o mochilas.</p>
+                            <a href="https://wa.me/523421215573?text=Hola,%20quisiera%20cotizar%20los%20Dijes%20para%20Bolso"
+                                target="_blank" class="btn btn-quote w-100">
+                                <i class="bi bi-whatsapp me-1"></i> Cotizar Dije
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 6: Espejo -->
+                <div class="col-md-6 col-lg-4 item-card decoracion">
+                    <div class="card card-craft">
+                        <div class="img-container">
+                            <span class="badge-craft">Exclusivo ✨</span>
+                            <img src="flores-espejo.jpg" alt="Espejo Floral">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold mb-2">Espejo Tocador Floral</h5>
+                            <p class="text-muted small mb-3">Espejo decorado con tulipanes y un elegante arco de perlas.
+                            </p>
+                            <a href="https://wa.me/523421215573?text=Hola,%20quisiera%20cotizar%20el%20Espejo%20Tocador"
+                                target="_blank" class="btn btn-quote w-100">
+                                <i class="bi bi-whatsapp me-1"></i> Cotizar Espejo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 7: Llaveros Flores -->
+                <div class="col-md-6 col-lg-4 item-card accesorios">
+                    <div class="card card-craft">
+                        <div class="img-container">
+                            <img src="llaveros-flores.jpg" alt="Llaveros Flores">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold mb-2">Llaveros Flores Silvestres</h5>
+                            <p class="text-muted small mb-3">Girasoles, lilies y flores de colores tejidos en formato
+                                llavero.</p>
+                            <a href="https://wa.me/523421215573?text=Hola,%20quisiera%20cotizar%20Llaveros%20Flores"
+                                target="_blank" class="btn btn-quote w-100">
+                                <i class="bi bi-whatsapp me-1"></i> Cotizar Llavero
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 8: Llaveros Kawaii -->
+                <div class="col-md-6 col-lg-4 item-card accesorios">
+                    <div class="card card-craft">
+                        <div class="img-container">
+                            <img src="llaveros-figuras.jpg" alt="Llaveros Kawaii">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold mb-2">Llaveros Figuras Kawaii</h5>
+                            <p class="text-muted small mb-3">Diseños de gatitos, ositos, abeja, estrellas y duraznos.
+                            </p>
+                            <a href="https://wa.me/523421215573?text=Hola,%20quisiera%20cotizar%20Llaveros%20Kawaii"
+                                target="_blank" class="btn btn-quote w-100">
+                                <i class="bi bi-whatsapp me-1"></i> Cotizar Llavero
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE RESEÑAS / TESTIMONIOS CON 5 ESTRELLAS -->
+    <section class="py-5" style="background-color: var(--rosa-pastel);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-white text-danger px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">Clientes
+                    Felices</span>
+                <h2 class="fw-bold display-6 text-dark">Lo que dicen de PetalCraft20</h2>
+                <p class="text-muted">Opiniones reales de clientes que regalaron o recibieron un detalle eterno</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Reseña 1 -->
+                <div class="col-md-4">
+                    <div class="review-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-5 me-3"
+                                style="width: 48px; height: 48px;">
+                                M
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Mariana Gómez</h6>
+                                <div class="stars-gold">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-muted mb-0">"Le regalé el ramo de gerberas a mi mamá de aniversario y quedó
+                            fascina. El trabajo es impecable y súper detallado, ¡100% recomendada!"</p>
+                    </div>
+                </div>
+
+                <!-- Reseña 2 -->
+                <div class="col-md-4">
+                    <div class="review-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-5 me-3"
+                                style="width: 48px; height: 48px;">
+                                S
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Sofia Ruiz</h6>
+                                <div class="stars-gold">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-muted mb-0">"Pedí los dijes con perlas para mi bolsa y me encantaron. Se notan
+                            hechos con mucho amor. Lesslie te atiende súper bien por WhatsApp."</p>
+                    </div>
+                </div>
+
+                <!-- Reseña 3 -->
+                <div class="col-md-4">
+                    <div class="review-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-5 me-3"
+                                style="width: 48px; height: 48px;">
+                                A
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Andrea Hernández</h6>
+                                <div class="stars-gold">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-muted mb-0">"El espejo decorado superó totalmente mis expectativas. Es hermoso
+                            para tomarse fotos de outfit. Definitivamente volveré a pedir."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h3 class="fw-bold mb-2" style="color: var(--rosa-fuerte);">¿Tienes un pedido especial en mente?
+                    </h3>
+                    <p class="text-muted mb-4">Platícanos tu idea y con gusto te la cotizamos sin compromiso.</p>
+
+                    <div class="p-4 rounded-4 shadow-lg border-0 text-white" style="background: var(--degrade-rosa);">
+                        <h4 class="fw-bold mb-1">Lesslie Elena Sandoval Zavala</h4>
+                        <p class="small opacity-75 mb-3">Creadora & Artista Principal</p>
+
+                        <div class="d-flex justify-content-center align-items-center gap-4 flex-wrap mt-3">
+                            <a href="https://wa.me/523421215573" target="_blank"
+                                class="btn btn-light rounded-pill px-4 fw-bold text-danger">
+                                <i class="bi bi-whatsapp text-success me-1"></i> WhatsApp: +52 342 121 5573
+                            </a>
+                            <a href="https://www.instagram.com/petal_craft20?igsh=MThieWtoaGEwb2RseQ==" target="_blank"
+                                class="btn btn-outline-light rounded-pill px-4 fw-bold">
+                                <i class="bi bi-instagram me-1"></i> @petal_craft20
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center bg-dark text-white-50">
+        <div class="container">
+            <small>© 2026 PetalCraft20 — Todos los derechos reservados.</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script de Filtro Interactivo -->
+    <script>
+        function filterGallery(category) {
+            const buttons = document.querySelectorAll('.btn-filter');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const items = document.querySelectorAll('.item-card');
+            items.forEach(item => {
+                if (category === 'todos' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
